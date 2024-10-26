@@ -1,0 +1,16 @@
+#pushing buttons 
+import board, time, digitalio, neopixel
+
+button = digitalio.DigitalInOut(board.GP15)
+# button.switch_to_input(pull=digitalio.Pull.UP)
+
+strip = neopixel.NeoPixel(board.GP16, 30)
+
+while True:
+    if button.value == False:
+        strip.fill((0, 255, 0))
+        print("BUTTON IS PRESSED! button.value = False")
+    else:
+        strip.fill((0, 0, 0))
+        print("BUTTON IS NOT PRESSED! button.value = True")
+    time.sleep(0.05)
